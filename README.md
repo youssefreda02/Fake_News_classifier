@@ -1,11 +1,10 @@
 # Fake News Classifier 📰🤖  
 
-A high-accuracy Fake News Classifier (F1 score: **0.9913**) built using transformer models and deployed within **PostgreSQL** via the `pgml` extension. This project enables **real-time classification** of news articles and supports **batch inference** through a script.
+A high-accuracy Fake News Classifier (F1 score: **0.9913**) built using transformer models. This project enables **real-time classification** of news articles and supports **batch inference** through a script.
 
 ## 🚀 Features  
 - **High Accuracy:** Achieves an **F1 score of 0.9913** using MPNET.  
 - **Comprehensive Dataset:** Combines scraped real news, LLM-generated fake articles, and Kaggle datasets.  
-- **Efficient Deployment:** Runs directly within **PostgreSQL** using `pgml` for seamless inference.  
 - **Flexible Inference:**  
   - Classify a **single article** via script.  
   - Process **multiple articles from a CSV file**.  
