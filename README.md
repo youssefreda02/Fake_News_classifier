@@ -25,6 +25,6 @@ A high-accuracy Fake News Classifier (F1 score: **0.9913**) built using transfor
 
 ### 1️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/YOUR_USERNAME/Fake-News-Classifier.git
+git clone https://github.com/youssefreda02/Fake_News_classifier.git
 cd Fake-News-Classifier
 ```
