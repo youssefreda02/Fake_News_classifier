@@ -1,6 +1,22 @@
 # Fake News Classifier 📰🤖  
 
 A high-accuracy Fake News Classifier (F1 score: **0.9913**) built using transformer models. This project enables **real-time classification** of news articles and supports **batch inference** through a script.
+## 📌 Release Notes (v1.0.0)
+This is the first official release of the **Fake News Classifier**. Key features:
+- **Transformer-based classifier** with high accuracy (**F1 score: 0.9913**)
+- **Supports real-time inference** for single news articles
+- **Batch classification** using CSV files
+- **Streamlit web app** for interactive use
+- **Automated unit tests** for validation and reliability
+
+## 📥 Input & 📤 Output
+### ✅ Supported Inputs:
+- **Single news article** (string)
+- **CSV file** with a `text` column containing multiple articles
+
+### 🔍 Output:
+- **Prediction**: `Real` or `Fake`
+- **Confidence Score**: Probability of prediction accuracy (0.0 - 1.0)
 
 ## 🚀 Features  
 - **High Accuracy:** Achieves an **F1 score of 0.9913** using MPNET.  
@@ -33,6 +49,7 @@ A high-accuracy Fake News Classifier (F1 score: **0.9913**) built using transfor
 ```bash
 git clone https://github.com/youssefreda02/Fake_News_classifier.git
 cd Fake_News_classifier
+pip install -r requirements.txt
 ```
 ## 2️⃣ Running Unit Tests  
 To verify the functionality and accuracy of the model, **unit tests** are included. Run them with:  
