@@ -18,17 +18,42 @@ A high-accuracy Fake News Classifier (F1 score: **0.9913**) built using transfor
 - **Model Training:**  
   - Compared **BERT** and **MPNET**, selecting MPNET for its superior performance.  
 - **Deployment:**  
-  - Website using `streamlit` app for inference with either a single article or a `.csv` file. 
+  - Website using `streamlit` app for inference with either a single article or a `.csv` file.  
+## 📂 Files in the Repository
+
+- `start.py` – The main script for inference (single article & batch processing).
+- `unit_test.py` – Contains automated tests for model validation.
+- `run.py` – Launches the Streamlit web application.
+- `requirements.txt` – Lists all dependencies needed to run the project.
+- `saved_model/` – Contains the trained model and tokenizer files.
 
 ## 🛠 Installation & Usage  
 
 ### 1️⃣ Clone the Repository  
 ```bash
 git clone https://github.com/youssefreda02/Fake_News_classifier.git
-cd Fake-News-Classifier
+cd Fake_News_classifier
+```
+## 2️⃣ Running Unit Tests  
+To verify the functionality and accuracy of the model, **unit tests** are included. Run them with:  
+```bash
+python -m unittest unit_test.py
+```
+After all tests are executed, a success message will be printed for each passed test.
+Example output:
+```bash
+✅ test_predict_real passed!
+✅ test_predict_fake passed!
+✅ test_empty_string passed!
+✅ test_whitespace_string passed!
+✅ test_non_string_input passed!
+✅ test_empty_csv_file passed!
+✅ test_csv_without_text_column passed!
+✅ test_invalid_csv_format passed!
+✅ test_non_existent_csv_file passed!
 ```
 
-### 2️⃣ Running the Streamlit App  
+### 3️⃣ Running the Streamlit App  
 To launch the web-based classifier, use:  
 ```bash
 streamlit run run.py
@@ -69,7 +94,7 @@ The script will prompt you to choose:
 | 1  | Example Headline 1 | Example article 1 | Fake       | 0.98       |
 | 2  | Example Headline 2 | Example article 2 | Real       | 0.95       |
 
-## 🖼️ Streamlit App Screenshot
+## 🎨 Streamlit App Screenshot
 
 ## 🔥 Future Enhancements  
 - Implementing a **confidence score visualization**.
@@ -77,5 +102,4 @@ The script will prompt you to choose:
 
 ## 🤝 Contributing  
 Contributions are welcome! Please open an issue or submit a pull request.
-
 
