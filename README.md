@@ -87,11 +87,29 @@ The script will prompt you to choose:
 - `file` to classify articles from a CSV file.
 
 #### Input Handling:
-- If an invalid choice is entered, the script will re-prompt the user.
-- If the article text is empty, an error message will be displayed.
-- If the csv file is empty, an error message will be displayed.
-- If the csv file is not found, an error message will be displayed.
-- If the csv file doesn't contain `text` column, an error message will be displayed.
+##### 🧪 Test Cases
+
+The following test scenarios are covered in the unit tests:
+
+| **Category**           | **Test Case**                                             | **Expected Behavior** |
+|-----------------------|--------------------------------------------------------|----------------------|
+| **Model Loading**     | Load a valid model                                      | Model loads successfully |
+|                      | Load a non-existent model                               | Raises `RuntimeError` |
+| **Text Classification** | Classify real news                                   | Returns `"Real"` label |
+|                      | Classify fake news                                    | Returns `"Fake"` label |
+|                      | Predict empty string                                  | Returns `"Invalid input"` with confidence `0.0` |
+|                      | Predict whitespace string                             | Returns `"Invalid input"` with confidence `0.0` |
+|                      | Predict non-string input (e.g., integer)              | Raises `ValueError` |
+|                      | Predict with `None` input                             | Raises `ValueError` |
+|                      | Predict extremely long text                           | Successfully processes and classifies |
+| **CSV Processing**    | Inference from a valid CSV                            | Generates an output file |
+|                      | Inference from an empty CSV                           | Raises `ValueError` |
+|                      | Inference from CSV missing the `text` column          | Raises `ValueError` |
+|                      | Inference from a non-CSV file                         | Raises `ValueError` with "Please provide a valid CSV file." |
+|                      | Inference from a non-existent file                    | Raises `FileNotFoundError` |
+|                      | Inference from CSV with `NaN` values                  | Handles missing values correctly |
+|                      | Inference from CSV with mixed data types              | Raises `ValueError` |
+
 
 #### CSV File Processing:
 - The CSV file should contain a `text` column.
