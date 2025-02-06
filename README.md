@@ -6,7 +6,6 @@ This is the first official release of the **Fake News Classifier**. Key features
 - **Transformer-based classifier** with high accuracy (**F1 score: 0.9913**)
 - **Supports real-time inference** for single news articles
 - **Batch classification** using CSV files
-- **Streamlit web app** for interactive use
 - **Automated unit tests** for validation and reliability
 
 ## 📥 Input & 📤 Output
@@ -22,7 +21,7 @@ This is the first official release of the **Fake News Classifier**. Key features
 - **High Accuracy:** Achieves an **F1 score of 0.9913** using MPNET.  
 - **Comprehensive Dataset:** Combines scraped real news, LLM-generated fake articles, and Kaggle datasets.  
 - **Flexible Inference:**  
-  - Classify a **single article** via command line or the Streamlit app.  
+  - Classify a **single article** via command line.  
   - Process **multiple articles from a CSV file** and receive structured output.  
 - **Automated Testing:** Includes **unit tests** for reliability.  
 
@@ -34,21 +33,18 @@ This is the first official release of the **Fake News Classifier**. Key features
 - **Model Training:**  
   - Compared **BERT** and **MPNET**, selecting MPNET for its superior performance.  
 - **Deployment:**  
-  - Website using `streamlit` app for inference with either a single article or a `.csv` file.  
+  - Website using `cmd` for inference with either a single article or a `.csv` file.  
 ## 📂 Files in the Repository
 
 - `start.py` – The main script for inference (single article & batch processing).
 - `unit_test.py` – Contains automated tests for model validation.
-- `run.py` – Launches the Streamlit web application.
 - `requirements.txt` – Lists all dependencies needed to run the project.
 - `saved_model/` – Contains the trained model and tokenizer files.
 
 ## 🛠 Installation & Usage  
 
-### 1️⃣ Clone the Repository  
+### 1️⃣ Install the requirements 
 ```bash
-git clone https://github.com/youssefreda02/Fake_News_classifier.git
-cd Fake_News_classifier
 pip install -r requirements.txt
 ```
 ## 2️⃣ Running Unit Tests  
@@ -69,13 +65,6 @@ Example output:
 ✅ test_invalid_csv_format passed!
 ✅ test_non_existent_csv_file passed!
 ```
-
-### 3️⃣ Running the Streamlit App  
-To launch the web-based classifier, use:  
-```bash
-streamlit run run.py
-```
-This will open a web interface where you can input an article and receive classification results.  
 
 ### 3️⃣ Command Line Inference  
 To classify news via the command line, run:  
@@ -129,12 +118,6 @@ The following test scenarios are covered in the unit tests:
 | 1  | Example Headline 1 | Example article 1 | Fake       | 0.98       |
 | 2  | Example Headline 2 | Example article 2 | Real       | 0.95       |
 
-## 🎨 Streamlit App Screenshot
-
-## 🔥 Future Enhancements  
-- Implementing a **confidence score visualization**.
+## 🔥 Future Enhancements
 - Expanding the dataset for better generalization.
-
-## 🤝 Contributing  
-Contributions are welcome! Please open an issue or submit a pull request.
 
