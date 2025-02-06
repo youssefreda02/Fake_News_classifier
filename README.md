@@ -11,7 +11,6 @@ This is the first official release of the **Fake News Classifier**. Key features
 ## 📥 Input & 📤 Output
 ### ✅ Supported Inputs:
 - **Single news article** (string)
-- **CSV file** with a `text` column containing multiple articles
 
 ### 🔍 Output:
 - **Prediction**: `Real` or `Fake`
@@ -22,7 +21,6 @@ This is the first official release of the **Fake News Classifier**. Key features
 - **Comprehensive Dataset:** Combines scraped real news, LLM-generated fake articles, and Kaggle datasets.  
 - **Flexible Inference:**  
   - Classify a **single article** via command line.  
-  - Process **multiple articles from a CSV file** and receive structured output.  
 - **Automated Testing:** Includes **unit tests** for reliability.  
 
 ## 📊 Model & Approach  
@@ -36,7 +34,7 @@ This is the first official release of the **Fake News Classifier**. Key features
   - Website using `cmd` for inference with either a single article or a `.csv` file.  
 ## 📂 Files in the Repository
 
-- `start.py` – The main script for inference (single article & batch processing).
+- `start.py` – The main script for inference (single article).
 - `unit_test.py` – Contains automated tests for model validation.
 - `requirements.txt` – Lists all dependencies needed to run the project.
 - `saved_model/` – Contains the trained model and tokenizer files.
@@ -72,8 +70,8 @@ To classify news via the command line, run:
 python start.py
 ```
 The script will prompt you to choose:
-- `single` to classify one article interactively.
-- `file` to classify articles from a CSV file.
+- `q` to Exit.
+- (Any text) to be classified.
 
 #### Input Handling:
 ##### 🧪 Test Cases
@@ -89,34 +87,8 @@ The following test scenarios are covered in the unit tests:
 |                      | Predict empty string                                  | Returns `"Invalid input"` with confidence `0.0` |
 |                      | Predict whitespace string                             | Returns `"Invalid input"` with confidence `0.0` |
 |                      | Predict non-string input (e.g., integer)              | Raises `ValueError` |
-|                      | Predict with `None` input                             | Raises `ValueError` |
 |                      | Predict extremely long text                           | Successfully processes and classifies |
-| **CSV Processing**    | Inference from a valid CSV                            | Generates an output file |
-|                      | Inference from an empty CSV                           | Raises `ValueError` |
-|                      | Inference from CSV missing the `text` column          | Raises `ValueError` |
-|                      | Inference from a non-CSV file                         | Raises `ValueError` with "Please provide a valid CSV file." |
-|                      | Inference from a non-existent file                    | Raises `FileNotFoundError` |
-|                      | Inference from CSV with `NaN` values                  | Handles missing values correctly |
-|                      | Inference from CSV with mixed data types              | Raises `ValueError` |
 
-
-#### CSV File Processing:
-- The CSV file should contain a `text` column.
-- When a CSV file is provided, the script adds **two new columns**:
-  - **`prediction`**: The classification result (Real/Fake)
-  - **`confidence`**: The model’s confidence score
-
-#### Example CSV Format (Before Processing):
-| id | title               | text               |
-|----|---------------------|--------------------|
-| 1  | Example Headline 1 | Example article 1 |
-| 2  | Example Headline 2 | Example article 2 |
-
-#### Example CSV Output (After Processing):
-| id | title               | text               | prediction | confidence |
-|----|---------------------|--------------------|------------|------------|
-| 1  | Example Headline 1 | Example article 1 | Fake       | 0.98       |
-| 2  | Example Headline 2 | Example article 2 | Real       | 0.95       |
 
 ## 🔥 Future Enhancements
 - Expanding the dataset for better generalization.
