@@ -5,16 +5,16 @@ A high-accuracy Fake News Classifier (F1 score: **0.9913**) built using transfor
 This is the first official release of the **Fake News Classifier**. Key features:
 - **Transformer-based classifier** with high accuracy (**F1 score: 0.9913**)
 - **Supports real-time inference** for single news articles
-- **Batch classification** using CSV files
 - **Automated unit tests** for validation and reliability
 
 ## 📥 Input & 📤 Output
+
 ### ✅ Supported Inputs:
-- **Single news article** (string)
+- **Single news article** as a `.txt` file.
 
 ### 🔍 Output:
-- **Prediction**: `Real` or `Fake`
-- **Confidence Score**: Probability of prediction accuracy (0.0 - 1.0)
+- **Prediction**: `"Real"` or `"Fake"`
+- **Confidence Score**: A probability value between `0.0` and `1.0`, indicating prediction confidence.
 
 ## 🚀 Features  
 - **High Accuracy:** Achieves an **F1 score of 0.9913** using MPNET.  
@@ -31,10 +31,10 @@ This is the first official release of the **Fake News Classifier**. Key features
 - **Model Training:**  
   - Compared **BERT** and **MPNET**, selecting MPNET for its superior performance.  
 - **Deployment:**  
-  - Website using `cmd` for inference with either a single article or a `.csv` file.  
+  - Website using `cmd` for inference with a single `String` article in a `.txt` file.  
 ## 📂 Files in the Repository
 
-- `start.py` – The main script for inference (single article).
+- `classify.py` – The main script for inference (single article).
 - `unit_test.py` – Contains automated tests for model validation.
 - `requirements.txt` – Lists all dependencies needed to run the project.
 - `saved_model/` – Contains the trained model and tokenizer files.
@@ -53,42 +53,40 @@ python -m unittest unit_test.py
 After all tests are executed, a success message will be printed for each passed test.
 Example output:
 ```bash
-✅ test_predict_real passed!
-✅ test_predict_fake passed!
-✅ test_empty_string passed!
-✅ test_whitespace_string passed!
-✅ test_non_string_input passed!
-✅ test_empty_csv_file passed!
-✅ test_csv_without_text_column passed!
-✅ test_invalid_csv_format passed!
-✅ test_non_existent_csv_file passed!
+Done test_empty_string passed!
+.Done test_invalid_file_type passed!
+.Done test_load_model_failure passed!
+.Done test_non_existent_file passed!
+.Done test_predict_fake passed!
+.Done test_predict_real passed!
+.Done test_predict_with_long_text passed!
+.Done test_whitespace_string passed!
+.
 ```
-
-### 3️⃣ Command Line Inference  
-To classify news via the command line, run:  
-```bash
-python start.py
-```
-The script will prompt you to choose:
-- `q` to Exit.
-- (Any text) to be classified.
 
 #### Input Handling:
-##### 🧪 Test Cases
+##### 🧪 Test Cases  
 
-The following test scenarios are covered in the unit tests:
+| **Category**           | **Test Case**                                         | **Expected Behavior** |
+|-----------------------|------------------------------------------------------|----------------------|
+| **Model Loading**     | Load a valid model                                  | Model loads successfully |
+|                      | Load a non-existent model                           | Prints error and exits |
+| **File Handling**     | Provide a non-existent file                        | Prints error and exits |
+|                      | Provide a non-text file                             | Prints error and exits |
+|                      | Provide an empty `.txt` file                        | Prints error and exits |
+|                      | Provide a file with unreadable encoding             | Prints error and exits |
+|                      | Provide a file with restricted permissions          | Prints error and exits |
+| **Text Classification** | Predict empty string                              | Prints error and exits |
+|                      | Predict whitespace string                           | Prints error and exits |
 
-| **Category**           | **Test Case**                                             | **Expected Behavior** |
-|-----------------------|--------------------------------------------------------|----------------------|
-| **Model Loading**     | Load a valid model                                      | Model loads successfully |
-|                      | Load a non-existent model                               | Raises `RuntimeError` |
-| **Text Classification** | Classify real news                                   | Returns `"Real"` label |
-|                      | Classify fake news                                    | Returns `"Fake"` label |
-|                      | Predict empty string                                  | Returns `"Invalid input"` with confidence `0.0` |
-|                      | Predict whitespace string                             | Returns `"Invalid input"` with confidence `0.0` |
-|                      | Predict non-string input (e.g., integer)              | Raises `ValueError` |
-|                      | Predict extremely long text                           | Successfully processes and classifies |
-
+## 📝 Example Usage:
+```bash
+python classify.py text2.txt
+```
+#### output
+```
+Prediction: Real (Confidence: 1.00)
+```
 
 ## 🔥 Future Enhancements
 - Expanding the dataset for better generalization.
