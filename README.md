@@ -13,7 +13,7 @@ This is the first official release of the **Fake News Classifier**. Key features
 - **Single news article** as a `.txt` file.
 
 ### 🔍 Output:
-- **Prediction**: `"Real"` or `"Fake"`
+- **Prediction**: `"Real"`, `"Fake"`, or `None`
 - **Confidence Score**: A probability value between `0.0` and `1.0`, indicating prediction confidence.
 
 ## 🚀 Features  
@@ -67,17 +67,26 @@ Done test_empty_string passed!
 #### Input Handling:
 ##### 🧪 Test Cases  
 
-| **Category**           | **Test Case**                                         | **Expected Behavior** |
-|-----------------------|------------------------------------------------------|----------------------|
-| **Model Loading**     | Load a valid model                                  | Model loads successfully |
-|                      | Load a non-existent model                           | Prints error and exits |
-| **File Handling**     | Provide a non-existent file                        | Prints error and exits |
-|                      | Provide a non-text file                             | Prints error and exits |
-|                      | Provide an empty `.txt` file                        | Prints error and exits |
-|                      | Provide a file with unreadable encoding             | Prints error and exits |
-|                      | Provide a file with restricted permissions          | Prints error and exits |
-| **Text Classification** | Predict empty string                              | Prints error and exits |
-|                      | Predict whitespace string                           | Prints error and exits |
+### 🧪 Test Cases
+
+| **Category**            | **Test Case**                                                  | **Expected Behavior**                                          |
+|-------------------------|----------------------------------------------------------------|---------------------------------------------------------------|
+| **Model Loading**       | Load a valid model                                             | Model loads successfully                                      |
+|                         | Load a non-existent model directory                            | Prints error message and exits                                |
+| **Text Classification** | Classify a real news article                                   | Returns `"Real"` label                                        |
+|                         | Classify a fake news article                                   | Returns `"Fake"` label                                        |
+|                         | Predict very short text (fewer than 40 words)                   | Returns `"None"` with confidence `0.0`                        |
+|                         | Predict non-English text (non-ASCII with ration 20%)                           | Returns `"None"` with confidence `0.0`                        |
+|                         | Predict punctuation/symbol-only input                          | Returns `"None"` with confidence `0.0`                        |
+|                         | Predict an empty string                                        | Returns `"None"` with confidence `0.0`                        |
+|                         | Predict a whitespace-only string                               | Returns `"None"` with confidence `0.0`                        |
+|                         | Predict extremely long text                                    | Successfully processes and returns a valid label (`Real`, `Fake`, or `None`) |
+| **File Handling**       | Provide a valid `.txt` file                                    | Returns expected classification                               |
+|                         | Provide an empty `.txt` file                                   | Returns `"None"` with confidence `0.0`                        |
+|                         | Provide a whitespace-only `.txt` file                          | Returns `"None"` with confidence `0.0`                        |
+|                         | Provide a non-existent file                                    | Prints error message and exits                                |
+|                         | Provide an unsupported file type (e.g., `.png`)                  | Prints error message and exits                                |
+
 
 ## 📝 Example Usage:
 ```bash
