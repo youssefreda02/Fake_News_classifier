@@ -76,7 +76,7 @@ Done test_empty_string passed!
 | **Text Classification** | Classify a real news article                                   | Returns `"Real"` label                                        |
 |                         | Classify a fake news article                                   | Returns `"Fake"` label                                        |
 |                         | Predict very short text (fewer than 40 words)                   | Returns `"None"` with confidence `0.0`                        |
-|                         | Predict non-English text (non-ASCII with ration 20%)                           | Returns `"None"` with confidence `0.0`                        |
+|                         | Predict non-English text (non-ASCII with 20%)                           | Returns `"None"` with confidence `0.0`                        |
 |                         | Predict punctuation/symbol-only input                          | Returns `"None"` with confidence `0.0`                        |
 |                         | Predict an empty string                                        | Returns `"None"` with confidence `0.0`                        |
 |                         | Predict a whitespace-only string                               | Returns `"None"` with confidence `0.0`                        |
