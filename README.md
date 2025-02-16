@@ -12,9 +12,20 @@ This is the first official release of the **Fake News Classifier**. Key features
 ### ✅ Supported Inputs:
 - **Single news article** as a `.txt` file.
 
-### 🔍 Output:
-- **Prediction**: `"Real"`, `"Fake"`, or `None`
-- **Confidence Score**: A probability value between `0.0` and `1.0`, indicating prediction confidence.
+
+### 🎯 Model Output
+The classifier provides three possible outputs:
+| Prediction | Meaning |
+|------------|---------|
+| **Real**, (Confidence: 0.95)  | The news article is classified as real with a confidence of 95%. |
+| **Fake**, (Confidence: 0.97)  | The news article is classified as fake with a confidence of 97%. |
+| **None**   | The article does not meet classification conditions (see below). |
+
+### When Does the Model Return `None`?
+- **Text is too short**: Fewer than **40 words**.
+- **Excessive non-ASCII characters**: More than **20%** of characters are non-ASCII (e.g., special symbols or non-Latin scripts).
+- **Low Confidence**: The model's confidence score is below **0.91**.
+
 
 ## 🚀 Features  
 - **High Accuracy:** Achieves an **F1 score of 0.9913** using MPNET.  
@@ -89,14 +100,41 @@ Done test_empty_string passed!
 
 
 ## 📝 Example Usage:
-```bash
-python classify.py text2.txt
+#### ✅ Valid Text
 ```
-#### output
+python classify.py real_news.txt
+Prediction: Real (Confidence: 0.95)
 ```
-Prediction: Real (Confidence: 1.00)
+```
+python classify.py fake_news.txt
+Prediction: Fake (Confidence: 0.97)
 ```
 
+#### ⚠️ Short Text
+```
+python classify.py short_text.txt
+Prediction: None (Confidence: 0.00)
+```
+
+#### ⚠️ Non-ASCII Content
+```
+python classify.py mixed_language.txt
+Prediction: None (Confidence: 0.00)
+```
+
+#### ⚠️ Low Confidence
+```
+python classify.py uncertain_news.txt
+Prediction: None (Confidence: 0.00)
+```
+
+---
+
+## 🖥 System Requirements
+- Python 3.8+
+- Torch and Transformers libraries
+- (Optional) CUDA-compatible GPU for faster inference
+
+---
 ## 🔥 Future Enhancements
 - Expanding the dataset for better generalization.
-
