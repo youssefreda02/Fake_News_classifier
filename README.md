@@ -19,7 +19,7 @@ The classifier provides three possible outputs:
 |------------|---------|
 | **Real**, (Confidence: 0.95)  | The news article is classified as real with a confidence of 95%. |
 | **Fake**, (Confidence: 0.97)  | The news article is classified as fake with a confidence of 97%. |
-| **None**   | The article does not meet classification conditions (see below). |
+| **None**, (Confidence: 0.00)  | The article does not meet classification conditions (see below). |
 
 ### When Does the Model Return `None`?
 - **Text is too short**: Fewer than **40 words**.
