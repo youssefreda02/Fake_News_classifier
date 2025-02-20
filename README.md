@@ -10,7 +10,7 @@ This is the first official release of the **Fake News Classifier**. Key features
 ## 📥 Input & 📤 Output
 
 ### ✅ Supported Inputs:
-- **Single news article** as a `.txt` file.
+- **Single news article** as a `.txt` file (UTF-8 encoded).
 
 
 ### 🎯 Model Output
@@ -26,6 +26,12 @@ The classifier provides three possible outputs:
 - **Excessive non-ASCII characters**: More than **20%** of characters are non-ASCII (e.g., special symbols or non-Latin scripts).
 - **Low Confidence**: The model's confidence score is below **0.91**.
 
+### ⚠️ Error Handling:
+- The script handles the following errors gracefully:
+  - Non-existent files.
+  - Invalid file types (non-`.txt` files).
+  - Permission issues when reading files.
+  - Non-UTF-8 encoded files.
 
 ## 🚀 Features  
 - **High Accuracy:** Achieves an **F1 score of 0.9913** using MPNET.  
@@ -42,7 +48,7 @@ The classifier provides three possible outputs:
 - **Model Training:**  
   - Compared **BERT** and **MPNET**, selecting MPNET for its superior performance.  
 - **Deployment:**  
-  - Website using `cmd` for inference with a single `String` article in a `.txt` file.  
+  - Using `cmd` for inference with a single `String` article in a `.txt` file.  
 ## 📂 Files in the Repository
 
 - `classify.py` – The main script for inference (single article).
